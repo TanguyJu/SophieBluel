@@ -10,6 +10,26 @@ export async function fetchCategories() {
     return await response.json();
 }
 
-export async function postLogin() {
+export async function postLogin(body) {
+    try {
+        const response = await fetch(`${BASE_URL}/users/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            body
+        });
+        
+        const data = await response.json();
+        
+        if (!data || !data.token) {
+            throw new Error("L'email ou le mot de passe est incorrect");
+        }
+        return data.token;
     
+    } catch(error) {
+        throw new Error("L'email ou le mot de passe est incorrect");
+    }
 }
+

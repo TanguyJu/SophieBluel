@@ -67,6 +67,10 @@ body {
 	padding-right: 10px;
 }
 
+#editionMode a {
+	text-decoration: none;
+}
+
 
 #header {
 	display: flex;
@@ -306,7 +310,94 @@ margin: auto;
 	margin-right: 10px;
 }
 
+#modif a{
+	text-decoration: none;
+	color: black;
+}
+
 #titleProjets {
 	margin-right: 20px;
 	text-align: center;
+}
+
+.modal {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.modal-wrapper {
+	overflow: auto;
+	width: 600px;
+	max-width: calc(100vh - 20px);
+	max-height: calc(100vh - 20px);
+	padding: 20px;
+	background-color: #FFF;
+	border-radius: 20px;
+}
+
+.modal-wrapper input {
+	display: flex;
+	height: 40px;
+	width: 280px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	justify-content: center;
+}
+
+.modal-wrapper h3 {
+	font-size: 22px;
+	text-align: center;
+}
+
+.modal-gallery figure {
+	width: 18%;
+	height: 120px;
+	position: relative;
+	display: inline-block;
+}
+
+.modal-gallery img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.modal-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 0;
+	justify-content: space-around;
+	margin-left: 80px;
+	margin-right: 80px;
+	padding-top: 50px;
+	padding-bottom: 60px;
+	border-bottom: solid 1px gray;
+}
+
+.delete-btn {
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	padding: 3px 5px 3px 5px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	border: none;
+}
+
+.modal-wrapper #close-btn {
+	display: flex;
+	justify-content: end;
+}
+
+#close-btn button {
+	border: none;
+	background-color: #FFF;
 }
