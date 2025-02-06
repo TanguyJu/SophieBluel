@@ -1,20 +1,23 @@
 import { fetchWorks, fetchCategories } from './apis.js';
 import { openModal } from './modal.js';
 
-function displayWorks(works, categoryId) {
+const token = sessionStorage.getItem("token");
+
+export function displayWorks(works, categoryId) {
     const divGallery = document.querySelector(".gallery");
     divGallery.innerHTML = "";
     let displayedWorks = [...works];
-    const token = sessionStorage.getItem("token");
 
     if (token != null) {
         const loginId = document.getElementById("loginId");
         const logoutId = document.getElementById("logoutId");
         const editionMode = document.getElementById("editionMode");
+        const modif = document.getElementById("modif");
 
         editionMode.classList.remove("hidden");
         logoutId.classList.remove("hidden");
         loginId.classList.add("hidden");
+        modif.classList.remove("hidden");
 
         logoutId.addEventListener("click", function () {
             sessionStorage.removeItem("token");
@@ -43,36 +46,25 @@ function displayWorks(works, categoryId) {
 };
 
 function displayFilters(categories, works) {
-    const token = sessionStorage.getItem("token");
+    if(token) return;
 
-    if (token != null) {
-        const modif = document.getElementById("modif");
-        modif.classList.remove("hidden");
-    } else {
-        const categoriesToDisplay = [...categories];
-        categoriesToDisplay.unshift({ id: "all", name: "Tous" });
+    const categoriesToDisplay = [...categories];
+    categoriesToDisplay.unshift({ id: "all", name: "Tous" });
 
-        return categoriesToDisplay.map(function (category) {
-            const button = document.createElement("button");
-            const filters = document.querySelector(".filters");
+    return categoriesToDisplay.map(function (category) {
+        const button = document.createElement("button");
+        const filters = document.querySelector(".filters");
 
-            button.setAttribute("data-id", category.id);
-            button.innerText = category.name;
+        button.setAttribute("data-id", category.id);
+        button.innerText = category.name;
 
-            button.addEventListener("click", function () {
-                displayWorks(works, button.dataset.id);
-            });
-
-            filters.appendChild(button);
+        button.addEventListener("click", function () {
+            displayWorks(works, button.dataset.id);
         });
-    }
+
+        filters.appendChild(button);
+    });
 };
-
-document.querySelectorAll(".js-modal").forEach(a => {
-    a.addEventListener("click", openModal);
-});
-
-
 
 async function main() {
     const categories = await fetchCategories();
@@ -81,6 +73,9 @@ async function main() {
     displayWorks(works);
     displayFilters(categories, works);
 
+    document.querySelectorAll(".js-modal").forEach(a => {
+        a.addEventListener("click", openModal);
+    });
 }
 
 main();
