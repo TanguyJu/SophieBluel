@@ -107,31 +107,27 @@
 			<span class="close-btn"><button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button></span>
 			</div>
 			<h3>Ajout photo</h3>
-			<form action="#" method="post">
+			<form action="#" method="post" id="myAmazingForm">
 				<div class="upload-box">
 					<label for="image">
-					<i class="fa-regular fa-image"></i>
-					<span class="upload-btn">+ Ajouter photo</span>
-					<p>jpg, png : 4mo max</p>
+						<i class="fa-regular fa-image"></i>
+						<span class="upload-btn">+ Ajouter photo</span>
+						<p>jpg, png : 4mo max</p>
 					</label>
-					<input type="file" id="image" name="image" style="display: none;" required>
+					<input type="file" id="image" name="image" style="display: none;">
 					<span class="error-message" id="image-error"></span>
 				</div>
 
-				<div class="image-preview" style="display: none;">
-
-				</div>
+				<div class="image-preview" style="display: none;"></div>
 
 				<div class="form-box">
-				<label for="title">Titre</label>
-				<input type="text" id="title" name="title" required>
-				<span class="error-message" id="title-error"></span>
+					<label for="title">Titre</label>
+					<input type="text" id="title" name="title">
+					<span class="error-message" id="title-error"></span>
 
-				<label for="category">Catégorie</label>
-				<select id="category" name="category" required>
-				
-				</select>
-				<span class="error-message" id="category-error"></span>
+					<label for="category">Catégorie</label>
+					<select id="category" name="category"></select>
+					<span class="error-message" id="category-error"></span>
 				</div>
 
 				<input type="submit" value="Valider" class="valider">

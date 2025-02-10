@@ -40,8 +40,35 @@ export async function openModal(event) {
             modal1.style.display = null;
             modal1.removeAttribute("aria-hidden");
         });
+
+        // document.getElementById('myAmazingForm').addEventListener('change', function(event) {
+        //     const myCurrentForm = event.target.form;
+        //     const isValid = !!myCurrentForm.image && !!myCurrentForm.title.value && !!myCurrentForm.category.value;
+        //     toggleButton(isValid);
+        // });
+        let isValidImage, isValidTitle;
+        document.getElementById('image').addEventListener('change', function(event) {
+            isValidImage = !!event.target.value;
+            toggleButton()
+        });
+
+        document.getElementById('title').addEventListener('input', function(event) {
+            isValidTitle = !!event.target.value;
+            toggleButton()
+        });
+
+        function toggleButton() {
+            const isValid = isValidImage && isValidTitle;
+            const button = document.querySelector('.valider');
+            if(isValid) {
+                button.classList.add("success");
+            } else {
+                button.classList.remove("success");
+            }
+        }
     });
 };
+
 
 // Function to close modals
 
@@ -225,7 +252,6 @@ function previewImage(event) {
 }
 
 // Function to display Error message
-
 function displayErrorMessage(elementId, message) {
     const errorElement = document.getElementById(elementId);
     if (errorElement) {
@@ -234,7 +260,6 @@ function displayErrorMessage(elementId, message) {
 }
 
 // Function to clear Error message
-
 function clearErrorMessages() {
     const errorMessages = document.querySelectorAll(".error-message");
     errorMessages.forEach(element => element.textContent = "");

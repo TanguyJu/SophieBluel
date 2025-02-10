@@ -483,6 +483,10 @@ margin: auto;
 	background-color: grey;
 }
 
+#modal2 .valider.success {
+	background-color: #1D6154;
+}
+
 #modal2 option, #category, #title {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
