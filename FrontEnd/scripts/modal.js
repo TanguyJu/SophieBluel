@@ -41,11 +41,6 @@ export async function openModal(event) {
             modal1.removeAttribute("aria-hidden");
         });
 
-        // document.getElementById('myAmazingForm').addEventListener('change', function(event) {
-        //     const myCurrentForm = event.target.form;
-        //     const isValid = !!myCurrentForm.image && !!myCurrentForm.title.value && !!myCurrentForm.category.value;
-        //     toggleButton(isValid);
-        // });
         let isValidImage, isValidTitle;
         document.getElementById('image').addEventListener('change', function(event) {
             isValidImage = !!event.target.value;

@@ -511,3 +511,11 @@ margin: auto;
 	color: red;
 }
 
+.upload-box span {
+	padding-bottom: 20px;
+}
+
+.form-box span {
+	display: flex;
+	padding-bottom: 15px;
+}
